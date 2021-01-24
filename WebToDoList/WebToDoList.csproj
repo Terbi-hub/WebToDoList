@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\content.html" />
+    <None Include="wwwroot\JavaScript.js" />
+    <None Include="wwwroot\StyleSheet.css" />
+  </ItemGroup>
+
 </Project>
