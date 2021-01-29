@@ -28,7 +28,7 @@ namespace WebToDoList
                         Text = "Unimportant task",
                         priotities = Tasks.Priotity.unimportant
                     }
-                    );
+                );
                 context.SaveChanges();
             }
         }

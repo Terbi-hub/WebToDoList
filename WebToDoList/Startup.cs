@@ -17,26 +17,44 @@ namespace WebToDoList
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+        public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<TaskContext>(options => options.UseSqlServer());
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<TaskContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddControllersWithViews();
             services.AddTransient<TimeService>();
         }
 
         public void Configure(IApplicationBuilder app, TimeService time)
         {
-            DefaultFilesOptions op = new DefaultFilesOptions();
-            app.UseRouting();
-            op.DefaultFileNames.Clear();
-            op.DefaultFileNames.Add("content.html");
-            app.UseDefaultFiles(op);
+            //DefaultFilesOptions op = new DefaultFilesOptions();
+            //app.UseRouting();
+            //op.DefaultFileNames.Clear();
+            //op.DefaultFileNames.Add("Index.html");
+            //app.UseDefaultFiles(op);
+            //app.UseStaticFiles();
+
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
-            
-            app.Run(async (context) =>
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                await context.Response.WriteAsync($"Текущее время: {time.GetTime()}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }  
     }
 }
+

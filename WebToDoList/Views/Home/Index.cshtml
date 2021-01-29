@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WebToDoList.DataTasks.Tasks>
+@{
+    //ViewData["Title"] = "Список смартфонов";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>To Do List</title>
+</head>
+<body>
+    <h3>Tasks</h3>
+    <table>
+        
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Text</td>
+                <td>@task.priotities</td>
+                <td><a href="~/Home/Delete/@task.Id">Delete</a></td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
