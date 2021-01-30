@@ -9,13 +9,13 @@ namespace WebToDoList.DataTasks
     {
         public int Id { get; set; }
         public string Text { get; set; }
-        public enum Priotity
+        public enum Priority
         {
             important = 1,
             usual,
             unimportant
         }
-        public Priotity priotities { get; set; }
+        public Priority priorities { get; set; }
         
     }
 }

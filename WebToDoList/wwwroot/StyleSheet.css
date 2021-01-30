@@ -36,6 +36,38 @@ div {
         display: block;
     }
 
+input {
+    margin: 20px;
+    margin-left: 40px;
+    border: none;
+    border-radius: 0;
+    width: 20%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+}
+
+
+.button_Add {
+    border: 2px solid #4CAF50;
+    background-color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-top: 25px;
+    color: black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+    .button_Add:hover {
+        background-color: #4CAF50;
+        color: snow;
+    }
+
+div.list_item {
+    position: fixed;
+}
+
 ul {
     list-style-type: none;
 }
@@ -48,7 +80,7 @@ ul {
     .task_list li {
         cursor: pointer;
         position: relative;
-        padding: 8px 8px 15px 20px;
+        padding: 8px 8px 15px 10px;
         width: 90%;
         background: #eee;
         font-size: 17px;
@@ -59,32 +91,38 @@ ul {
         user-select: none;
     }
 
-        .task_list li:nth-child(odd) {
-            background: #f9f9f9;
+    .task_list .context .priority {
+        text-align: right;
+        z-index: 1;
+    }
+
+    .task_list li:nth-child(odd) {
+        background: #f9f9f9;
+    }
+
+    .task_list li:hover {
+        background: #6fa985;
+    }
+
+    .task_list li.checked {
+        background: #888;
+        color: #fff;
+        text-decoration: line-through;
+    }
+
+        .task_list li.checked::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
         }
 
-        .task_list li:hover {
-            background: #6fa985;
-        }
-
-        .task_list li.checked {
-            background: #888;
-            color: #fff;
-            text-decoration: line-through;
-        }
-
-            .task_list li.checked::before {
-                content: '';
-                position: absolute;
-                border-color: #fff;
-                border-style: solid;
-                border-width: 0 2px 2px 0;
-                top: 10px;
-                left: 16px;
-                transform: rotate(45deg);
-                height: 15px;
-                width: 7px;
-            }
 .close {
     position: absolute;
     right: 0;
@@ -92,24 +130,7 @@ ul {
     padding: 12px 16px 12px 16px;
 }
 
-.close:hover {
-    background-color: #f44336;
-    color: white;
-}
-
-.button_Add {
-    border: 2px solid #4CAF50;
-    background-color: white;
-    border-radius: 4px;
-    padding: 5px 10px;
-    margin-top: 15px;
-    margin-left: 40px;
-    color: black;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-}
-
-.button_Add:hover {
-    background-color: #4CAF50;
-    color: snow;
-}
+    .close:hover {
+        background-color: #f44336;
+        color: white;
+    }

@@ -16,17 +16,17 @@ namespace WebToDoList
                     new Tasks
                     {
                         Text = "Important task",
-                        priotities = Tasks.Priotity.important
+                        priorities = Tasks.Priority.important
                     },
                     new Tasks
                     {
                         Text = "Usual task",
-                        priotities = Tasks.Priotity.usual
+                        priorities = Tasks.Priority.usual
                     },
                     new Tasks
                     {
                         Text = "Unimportant task",
-                        priotities = Tasks.Priotity.unimportant
+                        priorities = Tasks.Priority.unimportant
                     }
                 );
                 context.SaveChanges();
