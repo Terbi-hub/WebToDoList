@@ -11,11 +11,13 @@ namespace WebToDoList.DataTasks
         public string Text { get; set; }
         public enum Priority
         {
+            usual = 0,
             important = 1,
-            usual,
-            unimportant
+            unimportant = 2
         }
         public Priority priorities { get; set; }
+
+        public bool IsCompleted { get; set; }
         
     }
 }

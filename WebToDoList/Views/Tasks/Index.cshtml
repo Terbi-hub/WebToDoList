@@ -1,0 +1,53 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@model IEnumerable<WebToDoList.DataTasks.Tasks>
+
+@{
+    ViewData["Text"] = "Index";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+    <script src="~/JavaScript.js"></script>
+</head>
+<body>
+    <div class="content">
+        <div class="menu">
+            <ul>
+                <li id="today">Today</li>
+                <li id="tomorrow">Tomorrow</li>
+                <li id="all_tasks">All tasks</li>
+            </ul>
+        </div>
+        <div class="task_list">
+            <button onclick="newElement()" type="button" class="button_Add">Add task</button>
+
+            <a href="~/Tasks/Create" class="button">Create</a>
+            <ul id="list">
+                @foreach (var task in Model)
+                {
+                    @if (!task.IsCompleted)
+                    {
+                    <li>
+                        <div class="context">
+                            <div class="list_item">@task.Text</div>
+                            <div class="priority">@task.priorities</div>
+                            @*<button onclick="f(@task.Id)">Delete</button>*@
+                            <a href="~/Tasks/Delete/@task.Id">
+                                <span class="close">×</span>
+                            </a>
+                        </div>
+                    </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>
