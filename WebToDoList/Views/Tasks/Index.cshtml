@@ -23,8 +23,6 @@
             </ul>
         </div>
         <div class="task_list">
-            <button onclick="newElement()" type="button" class="button_Add">Add task</button>
-
             <a href="~/Tasks/Create" class="button">Create</a>
             <ul id="list">
                 @foreach (var task in Model)
@@ -36,9 +34,15 @@
                             <div class="list_item">@task.Text</div>
                             <div class="priority">@task.priorities</div>
                             @*<button onclick="f(@task.Id)">Delete</button>*@
-                            <a href="~/Tasks/Delete/@task.Id">
-                                <span class="close">×</span>
-                            </a>
+                            @*<a href="~/Tasks/Index/@task.Id">
+            <span class="close">×</span>
+        </a>*@
+
+                            <form method="post" action="~/Tasks/Index/@task.Id">
+                                <span class="close">
+                                <input type="submit" value="×" class="btn" />
+                                </span>
+                            </form>
                         </div>
                     </li>
                     }

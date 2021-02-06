@@ -43,27 +43,27 @@ namespace WebToDoList.Controllers
         }
 
         
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var tasks = await _context.Tasks
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (tasks == null)
-            {
-                return NotFound();
-            }
+        //    var tasks = await _context.Tasks
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (tasks == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(tasks);
-        }
+        //    return View(tasks);
+        //}
 
         
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Index(int id)
         {
             var tasks = await _context.Tasks.FindAsync(id);
             _context.Tasks.Remove(tasks);
