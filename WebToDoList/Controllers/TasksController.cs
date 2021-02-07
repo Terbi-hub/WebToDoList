@@ -28,7 +28,6 @@ namespace WebToDoList.Controllers
             return View();
         }
 
-       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Text,priorities")] Tasks tasks)

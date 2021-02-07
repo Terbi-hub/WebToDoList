@@ -7,39 +7,37 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Tasks</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="~/css/StyleCreate1.css" />
+</head>
+<body>
+    <div class="container">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <input asp-for="Text" class="form-control" />
-                <span asp-validation-for="Text" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="priorities" class="control-label"></label>
-                <select asp-for="priorities" class="form-control">
-                    <option>usual</option>
-                    <option>important</option>
-                    <option>unimportant</option>
-                </select>
-                <span asp-validation-for="priorities" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            <p>
+                <label for="new-task">Add Task</label>
+                <div class="form-group">
+
+                    <input id="new-task" asp-for="Text" class="form-control" />
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <select asp-for="priorities" class="form-control">
+                        <option>usual</option>
+                        <option>important</option>
+                        <option>unimportant</option>
+                    </select>
+                    <span asp-validation-for="priorities" class="text-danger"></span>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </p>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+</body>
+</html>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
