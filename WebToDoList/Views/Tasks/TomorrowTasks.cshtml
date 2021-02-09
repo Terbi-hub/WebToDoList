@@ -9,8 +9,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Home</title>
-    
+    <title>Tomorrow</title>
     <link rel="stylesheet" href="~/StyleSheet.css" />
 </head>
 <body>
@@ -27,11 +26,12 @@
             <ul id="list">
                 @foreach (var task in Model)
                 {
-                    @if (!task.IsCompleted)
+                    @if (!task.IsCompleted && task.Date.Day == DateTime.Now.Day + 1)
                     {
-                        <li id="#li">
+                        <li>
                             <div class="context">
                                 <input class="checkbox" type="checkbox" checked="@task.IsCompleted" onclick="window.location.href = '/Tasks/IsCompleted/@task.Id'" />
+
                                 <div class="list_item">@task.Text</div>
                                 <div class="priority">@task.priorities</div>
                                 <div class="data">@task.Date.ToString("dd MM yyyy")</div>
@@ -46,11 +46,12 @@
                 }
                 @foreach (var task in Model)
                 {
-                    @if (task.IsCompleted)
+                    @if (task.IsCompleted && task.Date.Day == DateTime.Now.Day + 1)
                     {
-                        <li id="#li2" class="checked">
+                        <li class="checked">
                             <div class="context">
                                 <input class="checkbox" type="checkbox" checked="@task.IsCompleted" onclick="window.location.href = '/Tasks/IsCompleted/@task.Id'" />
+
                                 <div class="list_item">@task.Text</div>
                                 <div class="priority">@task.priorities</div>
                                 <div class="data">@task.Date.ToString("dd MM yyyy")</div>

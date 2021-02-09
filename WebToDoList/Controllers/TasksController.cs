@@ -28,10 +28,24 @@ namespace WebToDoList.Controllers
             return View();
         }
 
+        public async Task<IActionResult> TodayTasks()
+        {
+            return View(await _context.Tasks.ToListAsync());
+        }
+
+        public async Task<IActionResult> TomorrowTasks()
+        {
+            return View(await _context.Tasks.ToListAsync());
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Text,priorities")] Tasks tasks)
+        public async Task<IActionResult> Create([Bind("Id,Text,Date,priorities")] Tasks tasks)
         {
+            if(tasks.Text == null)
+            {
+                return View(tasks);
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(tasks);
@@ -42,32 +56,32 @@ namespace WebToDoList.Controllers
         }
 
         
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public IActionResult IsCompleted(int? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            var task = _context.Tasks.Find(Id);
+            if (!task.IsCompleted)
+                task.IsCompleted = true;
+            else task.IsCompleted = false;
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-        //    var tasks = await _context.Tasks
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (tasks == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(tasks);
-        //}
-
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
-            var tasks = await _context.Tasks.FindAsync(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+                var tasks = await _context.Tasks.FindAsync(id);
             _context.Tasks.Remove(tasks);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         private bool TasksExists(int id)

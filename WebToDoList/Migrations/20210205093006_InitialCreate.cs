@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace WebToDoList.Migrations
 {
@@ -13,6 +14,7 @@ namespace WebToDoList.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Text = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
                     priorities = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

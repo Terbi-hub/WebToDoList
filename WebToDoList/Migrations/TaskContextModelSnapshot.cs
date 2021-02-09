@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
 using WebToDoList.DataTasks;
 
 namespace WebToDoList.Migrations
@@ -30,6 +31,8 @@ namespace WebToDoList.Migrations
 
                     b.Property<int>("priorities")
                         .HasColumnType("int");
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 

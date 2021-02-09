@@ -35,6 +35,7 @@ a {
 }
 
     .menu li {
+        cursor: pointer;
         color: white;
         padding: 16px;
         text-decoration: none;
@@ -69,10 +70,10 @@ input {
     outline: inherit;
 }
 
-    .button:hover {
-        background-color: #4CAF50;
-        color: snow;
-    }
+.button:hover {
+    background-color: #4CAF50;
+    color: snow;
+}
 
 div.list_item {
     position: fixed;
@@ -102,13 +103,20 @@ ul {
         user-select: none;
     }
 
+    .task_list .context .data {
+        margin-left: 600px;
+        position: relative;
+        text-align: left;
+        color: darkviolet;
+    }
+
     .task_list .context .priority {
-        margin-left: 850px;
+        margin-left: 830px;
+        position: fixed;
         text-align: center;
         padding-top: 0px;
         padding-right: 36px;
         color: darkviolet;
-        z-index: 1;
     }
 
     .task_list li:nth-child(odd) {
@@ -123,24 +131,16 @@ ul {
     .task_list li.checked {
         background: #888;
         color: #fff;
-        text-decoration: line-through;
     }
 
-        .task_list li.checked::before {
-            content: '';
-            position: absolute;
-            border-color: #fff;
-            border-style: solid;
-            border-width: 0 2px 2px 0;
-            top: 10px;
-            left: 16px;
-            transform: rotate(45deg);
-            height: 14px;
-            width: 7px;
+        .task_list li.checked .list_item {
+            text-decoration: line-through;
         }
+
 
 .close {
     position: absolute;
+    padding: 10px;
     right: 0;
     top: 0;
 }
@@ -149,3 +149,12 @@ ul {
         background-color: #f44336;
         color: white;
     }
+
+.footer {
+    position: absolute;
+    margin-left: 250px;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}

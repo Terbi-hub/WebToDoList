@@ -16,19 +16,22 @@ namespace WebToDoList
                     new Tasks
                     {
                         Text = "Important task",
-                        priorities = Tasks.Priority.important
+                        priorities = Tasks.Priority.important,
+                        Date = new DateTime(2021,9,10)
                     },
                     new Tasks
                     {
                         Text = "Usual task",
-                        priorities = Tasks.Priority.usual
+                        priorities = Tasks.Priority.usual,
+                        Date = new DateTime(2021, 9, 10)
                     },
                     new Tasks
                     {
                         Text = "Unimportant task",
-                        priorities = Tasks.Priority.unimportant
+                        priorities = Tasks.Priority.unimportant,
+                        Date = new DateTime(2021, 9, 10)
                     }
-                );
+                ) ;
                 context.SaveChanges();
             }
         }

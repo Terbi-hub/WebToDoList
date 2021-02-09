@@ -1,9 +1,35 @@
-﻿
+﻿@font-face {
+    font-family: 'Roboto';
+    src: url(fonts/Roboto-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background: #fff;
     color: #333;
-    font-family: Lato, sans-serif;
+    font-family: Roboto;
 }
+
+.menu {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+}
+
+    .menu li {
+        cursor: pointer;
+        color: white;
+        padding: 16px;
+        text-decoration: none;
+        display: block;
+    }
+
 
 .container {
     display: block;
@@ -17,9 +43,7 @@ input {
     border: 0px;
     color: #888;
     font-size: 15px;
-    width: 60px;
     margin: 10px 0 0;
-    font-family: Lato, sans-serif;
     cursor: pointer;
 }
 
@@ -63,13 +87,29 @@ input#new-task {
     width: 318px;
 }
 
-.form-control {
+.button {
+    border: 2px solid #4CAF50;
+    background-color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+    color: black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+    .button:hover {
+        background-color: #4CAF50;
+        color: snow;
+    }
+
+.control-label {
+    padding: 14px;
 }
 
 .form-control {
     font-weight: 700;
     color: #444;
-    padding: .6em 1.8em .5em .8em;
+    padding: .5em 1.8em .5em .8em;
     border: 1px solid #aaa;
     border-radius: .5em;
     -moz-appearance: none;
@@ -79,4 +119,22 @@ input#new-task {
     background-repeat: no-repeat, repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
+}
+
+
+    .form-control .form-control {
+        margin: 200px;
+    }
+
+.date-text-danger {
+    margin: 100px
+}
+
+.footer {
+    position: absolute;
+    margin-left: 250px;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }
