@@ -1,15 +1,13 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@using WebToDoList.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, AuthoringTagHelpers
-@model IEnumerable<WebToDoList.DataTasks.Tasks>
+@model TasksPageViewModel
 
-@{
-    ViewData["Text"] = "Index";
-}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Home</title>
+    <title>@Model.PageTitle</title>
     
     <link rel="stylesheet" href="~/StyleSheet.css" />
 </head>
@@ -25,7 +23,7 @@
         <div class="task_list">
             <a href="~/Tasks/Create" class="button">Create</a>
             <ul id="list">
-                @foreach (var task in Model)
+                @foreach (var task in Model.Tasks)
                 {
                     @if (!task.IsCompleted)
                     {
@@ -44,7 +42,7 @@
                         </li>
                     }
                 }
-                @foreach (var task in Model)
+                @foreach (var task in Model.Tasks)
                 {
                     @if (task.IsCompleted)
                     {

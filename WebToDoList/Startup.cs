@@ -33,6 +33,12 @@ namespace WebToDoList
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute
+                (
+                    name: "Focus",
+                    defaults: new { controller = "Tasks", action = "TodayTasks" },
+                    pattern: "focus");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Tasks}/{action=Index}/{id?}");

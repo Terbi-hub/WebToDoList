@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebToDoList.DataTasks;
+using WebToDoList.Models;
 
 namespace WebToDoList.Controllers
 {
@@ -20,7 +21,14 @@ namespace WebToDoList.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tasks.ToListAsync());
+            
+            var tasks = await _context.Tasks.ToListAsync();
+            var model = new TasksPageViewModel
+            {
+                Tasks = tasks,
+                PageTitle = "All"
+            };
+            return View(model);
         }
         
         public IActionResult Create()
@@ -30,17 +38,29 @@ namespace WebToDoList.Controllers
 
         public async Task<IActionResult> TodayTasks()
         {
-            return View(await _context.Tasks.ToListAsync());
+            var tasks = await _context.Tasks.Where(t => t.Date == DateTime.Today).ToListAsync();
+            var model = new TasksPageViewModel
+            {
+                Tasks = tasks,
+                PageTitle = "Today"
+            };
+            return View("Index",model);
         }
 
         public async Task<IActionResult> TomorrowTasks()
         {
-            return View(await _context.Tasks.ToListAsync());
+            var tasks = await _context.Tasks.Where(t => t.Date == DateTime.Today.AddDays(1)).ToListAsync();
+            var model = new TasksPageViewModel
+            {
+                Tasks = tasks,
+                PageTitle = "Tomorrow"
+            };
+            return View("Index", model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Text,Date,priorities")] Tasks tasks)
+        public async Task<IActionResult> Create(Tasks tasks)
         {
             if(tasks.Text == null)
             {

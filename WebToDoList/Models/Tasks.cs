@@ -20,7 +20,6 @@ namespace WebToDoList.DataTasks
 
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        public bool IsCompleted { get; set; }
-        
+        public bool IsCompleted { get; set; }   
     }
 }
